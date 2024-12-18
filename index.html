@@ -141,20 +141,62 @@
     <section class="table-section container">
       <h4 class="fw-bold text-success">Permintaan Komoditas</h4>
       <p>Jumlah permintaan komoditas tiap daerah di Provinsi Jawa Barat</p>
-      <div class="row mb-2">
-        <div class="col-md-4">
-          <select class="form-select">
-            <option class="fw-bold text-success">Daerah</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <select class="form-select">
-            <option>Komoditas</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <input type="date" class="form-control" />
-        </div>
+        <!-- Dropdowns Row -->
+  <div class="row mb-3 align-items-end">
+    <!-- Daerah Dropdown -->
+    <div class="col-md-3">
+      <label for="daerah" class="form-label fw-bold text-success">Daerah</label>
+      <select id="daerah" class="form-select">
+        <option>Pilih Daerah</option>
+      </select>
+    </div>
+    <!-- Komoditas Dropdown -->
+    <div class="col-md-3">
+      <label for="komoditas" class="form-label fw-bold text-success">Komoditas</label>
+      <select id="komoditas" class="form-select">
+        <option>Pilih Komoditas</option>
+      </select>
+    </div>
+    <!-- Periode Start Dropdown -->
+    <div class="col-md-3">
+      <label for="startMonth" class="form-label fw-bold text-success">Periode Mulai</label>
+      <select id="startMonth" class="form-select">
+        <option value="">Pilih Bulan</option>
+        <option value="1">Januari</option>
+        <option value="2">Februari</option>
+        <option value="3">Maret</option>
+        <option value="4">April</option>
+        <option value="5">Mei</option>
+        <option value="6">Juni</option>
+        <option value="7">Juli</option>
+        <option value="8">Agustus</option>
+        <option value="9">September</option>
+        <option value="10">Oktober</option>
+        <option value="11">November</option>
+        <option value="12">Desember</option>
+      </select>
+    </div>
+    <!-- Periode End Dropdown -->
+    <div class="col-md-3">
+      <label for="endMonth" class="form-label fw-bold text-success">Periode Akhir</label>
+      <select id="endMonth" class="form-select">
+        <option value="">Pilih Bulan</option>
+        <option value="1">Januari</option>
+        <option value="2">Februari</option>
+        <option value="3">Maret</option>
+        <option value="4">April</option>
+        <option value="5">Mei</option>
+        <option value="6">Juni</option>
+        <option value="7">Juli</option>
+        <option value="8">Agustus</option>
+        <option value="9">September</option>
+        <option value="10">Oktober</option>
+        <option value="11">November</option>
+        <option value="12">Desember</option>
+      </select>
+    </div>
+  </div>
+      </div>
       </div>
       <table class="table table-striped col-md-6">
         <thead>
@@ -184,25 +226,61 @@
       <div class="container">
         <h4 class="fw-bold text-success mb-3">Harga Komoditas</h4>
         <div class="card shadow-sm p-4">
-          <div class="row mb-3">
-            <div class="col-md-3">
-              <select class="form-select">
-                <option>Daerah</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <select class="form-select">
-                <option>Komoditas</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Periode X - Periode Y"
-              />
-            </div>
+        <!-- Dropdowns Row -->
+        <div class="row mb-3 align-items-end">
+          <!-- Daerah Dropdown -->
+          <div class="col-md-3">
+            <label for="daerah" class="form-label fw-bold text-success">Daerah</label>
+            <select id="daerah" class="form-select">
+              <option>Pilih Daerah</option>
+            </select>
           </div>
+          <!-- Komoditas Dropdown -->
+          <div class="col-md-3">
+            <label for="komoditas" class="form-label fw-bold text-success">Komoditas</label>
+            <select id="komoditas" class="form-select">
+              <option>Pilih Komoditas</option>
+            </select>
+          </div>
+          <!-- Periode Start Dropdown -->
+          <div class="col-md-3">
+            <label for="startMonth" class="form-label fw-bold text-success">Periode Mulai</label>
+            <select id="startMonth" class="form-select">
+              <option value="">Pilih Bulan</option>
+              <option value="1">Januari</option>
+              <option value="2">Februari</option>
+              <option value="3">Maret</option>
+              <option value="4">April</option>
+              <option value="5">Mei</option>
+              <option value="6">Juni</option>
+              <option value="7">Juli</option>
+              <option value="8">Agustus</option>
+              <option value="9">September</option>
+              <option value="10">Oktober</option>
+              <option value="11">November</option>
+              <option value="12">Desember</option>
+            </select>
+          </div>
+          <!-- Periode End Dropdown -->
+          <div class="col-md-3">
+            <label for="endMonth" class="form-label fw-bold text-success">Periode Akhir</label>
+            <select id="endMonth" class="form-select">
+              <option value="">Pilih Bulan</option>
+              <option value="1">Januari</option>
+              <option value="2">Februari</option>
+              <option value="3">Maret</option>
+              <option value="4">April</option>
+              <option value="5">Mei</option>
+              <option value="6">Juni</option>
+              <option value="7">Juli</option>
+              <option value="8">Agustus</option>
+              <option value="9">September</option>
+              <option value="10">Oktober</option>
+              <option value="11">November</option>
+              <option value="12">Desember</option>
+            </select>
+          </div>
+        </div>
           <!-- Chart Canvas -->
           <canvas id="komoditasChart"></canvas>
         </div>
@@ -313,4 +391,72 @@
     // Render the chart
     const komoditasChart = new Chart(ctx, config);
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const startMonth = document.getElementById("startMonth");
+    const endMonth = document.getElementById("endMonth");
+    const singleMonthSwitch = document.getElementById("singleMonthSwitch");
+
+    // Chart.js setup
+    const ctx = document.getElementById('komoditasChart').getContext('2d');
+    let komoditasChart;
+
+    function fetchChartData(start, end) {
+        // Replace this with actual API call or filtering logic
+        console.log(`Fetching data for ${start} to ${end}`);
+
+        return {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Harga Komoditas',
+                data: [0.5, 0.75, 1, 0.8, 0.9, 1.2],
+                backgroundColor: 'rgba(22, 167, 92, 0.2)',
+                borderColor: '#16A75C',
+                borderWidth: 2,
+                tension: 0.4
+            }]
+        };
+    }
+
+    function updateChart() {
+        const singleMonth = singleMonthSwitch.checked;
+        const start = startMonth.value;
+        const end = singleMonth ? start : endMonth.value;
+
+        if (!start || (!singleMonth && !end)) {
+            alert("Pilih bulan yang valid!");
+            return;
+        }
+
+        const chartData = fetchChartData(start, end);
+
+        if (komoditasChart) {
+            komoditasChart.destroy();
+        }
+
+        komoditasChart = new Chart(ctx, {
+            type: 'line',
+            data: chartData,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    startMonth.addEventListener("change", updateChart);
+    endMonth.addEventListener("change", updateChart);
+    singleMonthSwitch.addEventListener("change", function () {
+        if (this.checked) {
+            endMonth.disabled = true; // Disable end month if single month is selected
+        } else {
+            endMonth.disabled = false;
+        }
+        updateChart();
+    });
+});
 </script>
