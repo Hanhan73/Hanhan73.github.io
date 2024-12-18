@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pertanian Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #fff;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+      }
+      .hero {
+        background-color: #f9f9f9;
+        padding: 30px;
+      }
+      .hero img {
+        width: 100%;
+        max-width: 400px;
+      }
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .card {
+        flex: 1;
+        min-width: 200px;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .table-section,
+      .graph-section {
+        margin: 30px auto;
+      }
+      footer {
+        background-color: #157c3d;
+        color: #fff;
+        padding: 30px 20px;
+      }
+      footer a {
+        color: #fff;
+        text-decoration: none;
+      }
+      footer .row {
+        display: flex; /* Flexbox layout */
+        justify-content: space-between; 
+      }
+      
+      footer img {
+        max-width: 150px; /* Atur ukuran gambar */
+      }
+      footer hr {
+        border: none;
+        border-top: 1px solid #fff;
+        margin: 10px 0;
+      }
+      #komoditasChart {
+        height: 300px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div>
+        <img src="img/Logo.png" alt="Hero Image" />
+      </div>
+      <div>
+        <img src="img/ic_acc.png" alt="Hero Image" />
+        <strong>Admin</strong>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="fw-bold text-success">
+              Layanan Integrasi Data Sistem Informasi Perkebunan Provinsi Jawa
+              Barat
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </p>
+          </div>
+          <div class="col-md-6 text-center">
+            <img src="img/image 1.png" alt="Hero Image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="container my-4">
+      <div class="card-container">
+        <div class="card">
+          <h5 class="fw-bold text-success">XXXX Ha</h5>
+          <p>Luas Perkebunan</p>
+        </div>
+        <div class="card">
+          <h5 class="fw-bold text-success">XX Desa</h5>
+          <p>Total Desa</p>
+        </div>
+        <div class="card">
+          <h5 class="fw-bold text-success">XX Kelompok</h5>
+          <p>Kelompok Tani</p>
+        </div>
+        <div class="card">
+          <h5 class="fw-bold text-success">XX Komoditas</h5>
+          <p>Jumlah Komoditas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Section -->
+    <section class="table-section container">
+      <h4 class="fw-bold text-success">Permintaan Komoditas</h4>
+      <p>Jumlah permintaan komoditas tiap daerah di Provinsi Jawa Barat</p>
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <select class="form-select">
+            <option class="fw-bold text-success">Daerah</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select class="form-select">
+            <option>Komoditas</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <input type="date" class="form-control" />
+        </div>
+      </div>
+      <table class="table table-striped col-md-6">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Daerah</th>
+            <th>Jumlah</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nama 1</td>
+            <td>Daerah A</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>Nama 2</td>
+            <td>Daerah B</td>
+            <td>200</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Graph Section -->
+    <section class="chart-section py-5">
+      <div class="container">
+        <h4 class="fw-bold text-success mb-3">Harga Komoditas</h4>
+        <div class="card shadow-sm p-4">
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <select class="form-select">
+                <option>Daerah</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option>Komoditas</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Periode X - Periode Y"
+              />
+            </div>
+          </div>
+          <!-- Chart Canvas -->
+          <canvas id="komoditasChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <!-- Kolom 1: Gambar Logo -->
+          <div class="col-md-3">
+            <img
+              src="img/disbun.png"
+              alt="Logo Disbun"
+              class="mb-3"
+              style="max-width: 150px"
+            />
+          </div>
+
+          <!-- Kolom 2: Lokasi -->
+          <div class="col-md-3">
+            <h5 class="fw-bold">Dinas Perkebunan Jawa Barat</h5>
+            <p>
+              DINAS PERKEBUNAN PROVINSI JAWA BARAT. Jl. Surapati No.67, Sadang
+              Serang, Coblong, Kota Bandung, Jawa Barat 40133
+            </p>
+          </div>
+
+          <!-- Kolom 3: Contact -->
+          <div class="col-md-3">
+            <h5 class="fw-bold">Contact</h5>
+            <p>
+              (022) 2506156<br />
+              <a href="mailto:disbun@jabarprov.go.id" style="color: #fff">
+                disbun@jabarprov.go.id </a
+              ><br />
+              <a href="mailto:disbun.provjabar@gmail.com" style="color: #fff">
+                disbun.provjabar@gmail.com
+              </a>
+            </p>
+          </div>
+
+          <!-- Kolom 4: Social Media -->
+          <div class="col-md-3">
+            <h5 class="fw-bold">Our Social Media</h5>
+            <a href="#">
+              <img src="img/ic_ig.png" alt="Instagram" width="30px" class="me-3" />
+            </a>
+            <a href="#">
+              <img src="img/ic_x.png" alt="Twitter" width="30px" class="me-3" />
+            </a>
+            <a href="#">
+              <img src="img/ic_fb.png" alt="Facebook" width="30px" class="me-3" />
+            </a>
+            <a href="#">
+              <img src="img/ic_yt.png" alt="YouTube" width="40px" />
+            </a>
+          </div>
+        <!-- Garis Pemisah -->
+        <hr/>
+
+        <!-- Copyright -->
+        <p class="text-end mt-2 mb-0">
+          &copy; 2022 Dinas Perkebunan Jawa Barat. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById("komoditasChart").getContext("2d");
+
+    // Sample data for the chart
+    const data = {
+      labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"], // X-axis (e.g., months or custom periods)
+      datasets: [
+        {
+          label: "Harga Komoditas",
+          data: [0.5, 0.75, 1, 0.8, 0.9, 1.2, 1, 0.95, 1.1], // Example Y-axis values
+          backgroundColor: "rgba(22, 167, 92, 0.2)", // Light green background
+          borderColor: "#16A75C", // Solid green border
+          borderWidth: 2,
+          tension: 0.4, // Adds smooth curve to line chart
+        },
+      ],
+    };
+
+    // Chart configuration
+    const config = {
+      type: "line", // Chart type: line
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    };
+
+    // Render the chart
+    const komoditasChart = new Chart(ctx, config);
+  });
+</script>
