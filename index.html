@@ -177,18 +177,15 @@
                     <div class="col-md-3">
                         <label for="provinsi" class="form-label fw-bold text-success">Provinsi</label>
                         <select id="provinsi" class="form-select">
-                        <option value="">Pilih Provinsi</option>
-                        <option value="jawa_barat">Jawa Barat</option>
-                        <option value="jawa_tengah">Jawa Tengah</option>
-                        <option value="jawa_timur">Jawa Timur</option>
+                        <option value="" disabled selected>Pilih Provinsi</option>
                       </select>
 
                     </div>
                     <!-- Kabupaten Dropdown -->
                     <div class="col-md-2">
-                      <label for="kabupaten" class="form-label fw-bold text-success">Kabupaten:</label>
+                      <label for="kabupaten" class="form-label fw-bold text-success">Kabupaten/Kota</label>
                       <select id="kabupaten" class="form-select" name="kabupaten">
-                        <option value="">Pilih Kabupaten</option>
+                        <option value="" disabled selected>Pilih Kabupaten/Kota</option>
                       </select>
                     </div>
                     <!-- Komoditas Dropdown -->
@@ -283,9 +280,9 @@
                   <div class="row mb-3 align-items-end">
                     <!-- Negara Dropdown -->
                     <div class="col-md-3">
-                      <label for="daerah" class="form-label fw-bold text-success">Negara</label>
-                      <select id="daerah" class="form-select">
-                        <option>Pilih Negara</option>
+                      <label for="negara" class="form-label fw-bold text-success">Negara</label>
+                      <select id="negara" class="form-select">
+                        <option value="" disabled selected>Pilih Negara</option>
                       </select>
                     </div>
                     <!-- Komoditas Dropdown -->
@@ -432,39 +429,10 @@
       </div>
     </footer>
 
+    <script src="js/kabupatenkota.js"></script>
+    <script src="js/dynamicDropdown.js"></script>
+    <script src="js/countriesDropdown.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
-
-  <script>
-    const provinsiSelect = document.getElementById('provinsi');
-const kabupatenSelect = document.getElementById('kabupaten');
-
-// Data for Kabupaten based on Provinsi
-const kabupatenData = {
-  jawa_barat: ['Kabupaten A', 'Kabupaten B', 'Kabupaten C'],
-  jawa_tengah: ['Kabupaten D', 'Kabupaten E', 'Kabupaten F'],
-  jawa_timur: ['Kabupaten G', 'Kabupaten H', 'Kabupaten I']
-};
-
-// Function to update Kabupaten options
-function updateKabupatenOptions() {
-  const selectedProvinsi = provinsiSelect.value;
-
-  // Clear existing options
-  kabupatenSelect.innerHTML = '<option value="">Pilih Kabupaten</option>';
-
-  if (selectedProvinsi && kabupatenData[selectedProvinsi]) {
-    kabupatenData[selectedProvinsi].forEach((kabupaten) => {
-      const option = document.createElement('option');
-      option.value = kabupaten.toLowerCase().replace(/\s+/g, '_');
-      option.textContent = kabupaten;
-      kabupatenSelect.appendChild(option);
-    });
-  }
-}
-
-// Event listener for Provinsi dropdown
-provinsiSelect.addEventListener('change', updateKabupatenOptions);
-  </script>
 </html>
