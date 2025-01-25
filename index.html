@@ -10,6 +10,15 @@
       rel="stylesheet"
     />
     <style>
+            :root {
+        --primary-color: #157c3d;
+        --secondary-color: #f9f9f9;
+        --text-color: #333;
+        --border-color: #ddd;
+        --white: #fff;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+      }
+
       body {
         font-family: Arial, sans-serif;
         color: #333;
@@ -75,6 +84,32 @@
       #komoditasChart {
         height: 300px;
       }
+      .nav-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 400px; /* Space between tabs */
+}
+
+.nav-tabs .nav-link {
+  color: var(--primary-color); /* Default text color */
+  font-weight: bold;
+  text-decoration: none; /* Remove default underline */
+  padding: 7px 0; /* Adds padding for spacing */
+  border: none;
+  border-bottom: 2px solid transparent; /* Invisible underline */
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--primary-color); /* Change text color for active tab */
+  border-bottom: 2px solid var(--primary-color); /* Add underline */
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--primary-color); /* Optional hover effect */
+  border-bottom: 2px solid var(--primary-color); /* Optional hover underline */
+}
+      
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
@@ -82,7 +117,8 @@
     <!-- Header -->
     <header>
       <div>
-        <img src="img/Logo.png" alt="Hero Image" />
+        <img src="img/logo jabar.png" alt="Hero Image" />
+        <img src="img/logo.png" alt="Hero Image" />
       </div>
       <div>
         <img src="img/ic_acc.png" alt="Hero Image" />
@@ -115,178 +151,225 @@
       </div>
     </section>
 
-    <!-- Cards -->
-    <section class="container my-4">
-      <div class="card-container">
-        <div class="card">
-          <h5 class="fw-bold text-success">XXXX Ha</h5>
-          <p>Luas Perkebunan</p>
-        </div>
-        <div class="card">
-          <h5 class="fw-bold text-success">XX Desa</h5>
-          <p>Total Desa</p>
-        </div>
-        <div class="card">
-          <h5 class="fw-bold text-success">XX Kelompok</h5>
-          <p>Kelompok Tani</p>
-        </div>
-        <div class="card">
-          <h5 class="fw-bold text-success">XX Komoditas</h5>
-          <p>Jumlah Komoditas</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Table Section -->
-    <section class="table-section container">
+    <div class="container mt-5">
       <h4 class="fw-bold text-success">Permintaan Komoditas</h4>
-      <p>Jumlah permintaan komoditas tiap daerah di Provinsi Jawa Barat</p>
-        <!-- Dropdowns Row -->
-  <div class="row mb-3 align-items-end">
-    <!-- Daerah Dropdown -->
-    <div class="col-md-3">
-      <label for="daerah" class="form-label fw-bold text-success">Daerah</label>
-      <select id="daerah" class="form-select">
-        <option>Pilih Daerah</option>
-      </select>
-    </div>
-    <!-- Komoditas Dropdown -->
-    <div class="col-md-3">
-      <label for="komoditas" class="form-label fw-bold text-success">Komoditas</label>
-      <select id="komoditas" class="form-select">
-        <option>Pilih Komoditas</option>
-      </select>
-    </div>
-    <!-- Periode Start Dropdown -->
-    <div class="col-md-3">
-      <label for="startMonth" class="form-label fw-bold text-success">Periode Mulai</label>
-      <select id="startMonth" class="form-select">
-        <option value="">Pilih Bulan</option>
-        <option value="1">Januari</option>
-        <option value="2">Februari</option>
-        <option value="3">Maret</option>
-        <option value="4">April</option>
-        <option value="5">Mei</option>
-        <option value="6">Juni</option>
-        <option value="7">Juli</option>
-        <option value="8">Agustus</option>
-        <option value="9">September</option>
-        <option value="10">Oktober</option>
-        <option value="11">November</option>
-        <option value="12">Desember</option>
-      </select>
-    </div>
-    <!-- Periode End Dropdown -->
-    <div class="col-md-3">
-      <label for="endMonth" class="form-label fw-bold text-success">Periode Akhir</label>
-      <select id="endMonth" class="form-select">
-        <option value="">Pilih Bulan</option>
-        <option value="1">Januari</option>
-        <option value="2">Februari</option>
-        <option value="3">Maret</option>
-        <option value="4">April</option>
-        <option value="5">Mei</option>
-        <option value="6">Juni</option>
-        <option value="7">Juli</option>
-        <option value="8">Agustus</option>
-        <option value="9">September</option>
-        <option value="10">Oktober</option>
-        <option value="11">November</option>
-        <option value="12">Desember</option>
-      </select>
-    </div>
+      <!-- Tabs Navigation -->
+      <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="nasional-tab" data-bs-toggle="tab" data-bs-target="#nasional" type="button" role="tab" aria-controls="nasional" aria-selected="true">Nasional</button>
+          </li>
+          <li class="nav-item" role="presentation">
+              <button class="nav-link" id="internasional-tab" data-bs-toggle="tab" data-bs-target="#internasional" type="button" role="tab" aria-controls="internasional" aria-selected="false">Internasional</button>
+          </li>
+      </ul>
+
+      <!-- Tabs Content -->
+      <div class="tab-content" id="dashboardTabsContent">
+          <!-- Tab Nasional -->
+          <div class="tab-pane fade show active" id="nasional" role="tabpanel" aria-labelledby="nasional-tab">
+              <div class="mt-4">
+                  <h3>Data Nasional</h3>
+                  <p>Berikut adalah data pertanian dalam skala nasional.</p>
+
+                  <div class="row mb-2 align-items-end">
+                    <!-- Provinsi Dropdown -->
+                    <div class="col-md-3">
+                        <label for="provinsi" class="form-label fw-bold text-success">Provinsi</label>
+                        <select id="provinsi" class="form-select">
+                        <option value="">Pilih Provinsi</option>
+                        <option value="jawa_barat">Jawa Barat</option>
+                        <option value="jawa_tengah">Jawa Tengah</option>
+                        <option value="jawa_timur">Jawa Timur</option>
+                      </select>
+
+                    </div>
+                    <!-- Kabupaten Dropdown -->
+                    <div class="col-md-2">
+                      <label for="kabupaten" class="form-label fw-bold text-success">Kabupaten:</label>
+                      <select id="kabupaten" class="form-select" name="kabupaten">
+                        <option value="">Pilih Kabupaten</option>
+                      </select>
+                    </div>
+                    <!-- Komoditas Dropdown -->
+                    <div class="col-md-2">
+                      <label for="komoditas" class="form-label fw-bold text-success">Komoditas</label>
+                      <select id="komoditas" class="form-select">
+                        <option>Pilih Komoditas</option>
+                        <option value="arabika">Kopi Arabika</option>
+                        <option value="robusta">Kopi Robusta</option>
+                        <option value="kopra">Kopra</option>
+                        <option value="teh">Teh</option>
+                      </select>
+                    </div>
+                    <!-- Periode Start Dropdown -->
+                    <div class="col-md-2">
+                      <label for="startMonth" class="form-label fw-bold text-success">Periode Mulai</label>
+                      <select id="startMonth" class="form-select">
+                        <option value="">Pilih Bulan</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Februari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Agustus</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                      </select>
+                    </div>
+                    <!-- Periode End Dropdown -->
+                    <div class="col-md-2">
+                      <label for="endMonth" class="form-label fw-bold text-success">Periode Akhir</label>
+                      <select id="endMonth" class="form-select">
+                        <option value="">Pilih Bulan</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Februari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Agustus</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                      </select>
+                    </div>
+                  </div>
+                  <table class="table table-striped col-md-6">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Provinsi</th>
+                              <th>Kabupaten</th>
+                              <th>Komoditas</th>
+                              <th>Kuantiti</th>
+                              <th>Kualitas</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>1</td>
+                              <td>Jawa Barat</td>
+                              <td>Bandung Barat</td>
+                              <td>Padi</td>
+                              <td>500 Ton</td>
+                              <td>A</td>
+                          </tr>
+                          <tr>
+                              <td>2</td>
+                              <td>Jawa Barat</td>
+                              <td>Bandung</td>
+                              <td>Kelapa Sawit</td>
+                              <td>300 Ton</td>
+                              <td>B</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <!-- Tab Internasional -->
+          <div class="tab-pane fade" id="internasional" role="tabpanel" aria-labelledby="internasional-tab">
+              <div class="mt-4">
+                  <h3>Data Internasional</h3>
+                  <p>Berikut adalah data ekspor pertanian ke luar negeri.</p>
+
+                  <div class="row mb-3 align-items-end">
+                    <!-- Negara Dropdown -->
+                    <div class="col-md-3">
+                      <label for="daerah" class="form-label fw-bold text-success">Negara</label>
+                      <select id="daerah" class="form-select">
+                        <option>Pilih Negara</option>
+                      </select>
+                    </div>
+                    <!-- Komoditas Dropdown -->
+                    <div class="col-md-3">
+                      <label for="komoditas" class="form-label fw-bold text-success">Komoditas</label>
+                      <select id="komoditas" class="form-select">
+                        <option>Pilih Komoditas</option>
+                        <option value="arabika">Kopi Arabika</option>
+                        <option value="robusta">Kopi Robusta</option>
+                        <option value="kopra">Kopra</option>
+                        <option value="teh">Teh</option>
+                      </select>
+                    </div>
+                    <!-- Periode Start Dropdown -->
+                    <div class="col-md-3">
+                      <label for="startMonth" class="form-label fw-bold text-success">Periode Mulai</label>
+                      <select id="startMonth" class="form-select">
+                        <option value="">Pilih Bulan</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Februari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Agustus</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                      </select>
+                    </div>
+                    <!-- Periode End Dropdown -->
+                    <div class="col-md-3">
+                      <label for="endMonth" class="form-label fw-bold text-success">Periode Akhir</label>
+                      <select id="endMonth" class="form-select">
+                        <option value="">Pilih Bulan</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Februari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Agustus</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <table class="table table-striped col-md-6">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Negara</th>
+                              <th>Komoditas</th>
+                              <th>Kuantiti</th>
+                              <th>Kualitas</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>1</td>
+                              <td>Jepang</td>
+                              <td>Kopi</td>
+                              <td>200 Ton</td>
+                              <td>B</td>
+                          </tr>
+                          <tr>
+                              <td>2</td>
+                              <td>Amerika Serikat</td>
+                              <td>Kakao</td>
+                              <td>150 Ton</td>
+                              <td>B</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
   </div>
-      </div>
-      </div>
-      <table class="table table-striped col-md-6">
-        <thead>
-          <tr>
-            <th>Nama</th>
-            <th>Daerah</th>
-            <th>Jumlah</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Nama 1</td>
-            <td>Daerah A</td>
-            <td>100</td>
-          </tr>
-          <tr>
-            <td>Nama 2</td>
-            <td>Daerah B</td>
-            <td>200</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Graph Section -->
-    <section class="chart-section py-5">
-      <div class="container">
-        <h4 class="fw-bold text-success mb-3">Harga Komoditas</h4>
-        <div class="card shadow-sm p-4">
-        <!-- Dropdowns Row -->
-        <div class="row mb-3 align-items-end">
-          <!-- Daerah Dropdown -->
-          <div class="col-md-3">
-            <label for="daerah" class="form-label fw-bold text-success">Daerah</label>
-            <select id="daerah" class="form-select">
-              <option>Pilih Daerah</option>
-            </select>
-          </div>
-          <!-- Komoditas Dropdown -->
-          <div class="col-md-3">
-            <label for="komoditas" class="form-label fw-bold text-success">Komoditas</label>
-            <select id="komoditas" class="form-select">
-              <option>Pilih Komoditas</option>
-            </select>
-          </div>
-          <!-- Periode Start Dropdown -->
-          <div class="col-md-3">
-            <label for="startMonth" class="form-label fw-bold text-success">Periode Mulai</label>
-            <select id="startMonth" class="form-select">
-              <option value="">Pilih Bulan</option>
-              <option value="1">Januari</option>
-              <option value="2">Februari</option>
-              <option value="3">Maret</option>
-              <option value="4">April</option>
-              <option value="5">Mei</option>
-              <option value="6">Juni</option>
-              <option value="7">Juli</option>
-              <option value="8">Agustus</option>
-              <option value="9">September</option>
-              <option value="10">Oktober</option>
-              <option value="11">November</option>
-              <option value="12">Desember</option>
-            </select>
-          </div>
-          <!-- Periode End Dropdown -->
-          <div class="col-md-3">
-            <label for="endMonth" class="form-label fw-bold text-success">Periode Akhir</label>
-            <select id="endMonth" class="form-select">
-              <option value="">Pilih Bulan</option>
-              <option value="1">Januari</option>
-              <option value="2">Februari</option>
-              <option value="3">Maret</option>
-              <option value="4">April</option>
-              <option value="5">Mei</option>
-              <option value="6">Juni</option>
-              <option value="7">Juli</option>
-              <option value="8">Agustus</option>
-              <option value="9">September</option>
-              <option value="10">Oktober</option>
-              <option value="11">November</option>
-              <option value="12">Desember</option>
-            </select>
-          </div>
-        </div>
-          <!-- Chart Canvas -->
-          <canvas id="komoditasChart"></canvas>
-        </div>
-      </div>
-    </section>
-
     <footer>
       <div class="container">
         <div class="row">
@@ -352,111 +435,36 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
-</html>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById("komoditasChart").getContext("2d");
+  <script>
+    const provinsiSelect = document.getElementById('provinsi');
+const kabupatenSelect = document.getElementById('kabupaten');
 
-    // Sample data for the chart
-    const data = {
-      labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"], // X-axis (e.g., months or custom periods)
-      datasets: [
-        {
-          label: "Harga Komoditas",
-          data: [0.5, 0.75, 1, 0.8, 0.9, 1.2, 1, 0.95, 1.1], // Example Y-axis values
-          backgroundColor: "rgba(22, 167, 92, 0.2)", // Light green background
-          borderColor: "#16A75C", // Solid green border
-          borderWidth: 2,
-          tension: 0.4, // Adds smooth curve to line chart
-        },
-      ],
-    };
+// Data for Kabupaten based on Provinsi
+const kabupatenData = {
+  jawa_barat: ['Kabupaten A', 'Kabupaten B', 'Kabupaten C'],
+  jawa_tengah: ['Kabupaten D', 'Kabupaten E', 'Kabupaten F'],
+  jawa_timur: ['Kabupaten G', 'Kabupaten H', 'Kabupaten I']
+};
 
-    // Chart configuration
-    const config = {
-      type: "line", // Chart type: line
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    };
+// Function to update Kabupaten options
+function updateKabupatenOptions() {
+  const selectedProvinsi = provinsiSelect.value;
 
-    // Render the chart
-    const komoditasChart = new Chart(ctx, config);
-  });
+  // Clear existing options
+  kabupatenSelect.innerHTML = '<option value="">Pilih Kabupaten</option>';
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const startMonth = document.getElementById("startMonth");
-    const endMonth = document.getElementById("endMonth");
-    const singleMonthSwitch = document.getElementById("singleMonthSwitch");
-
-    // Chart.js setup
-    const ctx = document.getElementById('komoditasChart').getContext('2d');
-    let komoditasChart;
-
-    function fetchChartData(start, end) {
-        // Replace this with actual API call or filtering logic
-        console.log(`Fetching data for ${start} to ${end}`);
-
-        return {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-            datasets: [{
-                label: 'Harga Komoditas',
-                data: [0.5, 0.75, 1, 0.8, 0.9, 1.2],
-                backgroundColor: 'rgba(22, 167, 92, 0.2)',
-                borderColor: '#16A75C',
-                borderWidth: 2,
-                tension: 0.4
-            }]
-        };
-    }
-
-    function updateChart() {
-        const singleMonth = singleMonthSwitch.checked;
-        const start = startMonth.value;
-        const end = singleMonth ? start : endMonth.value;
-
-        if (!start || (!singleMonth && !end)) {
-            alert("Pilih bulan yang valid!");
-            return;
-        }
-
-        const chartData = fetchChartData(start, end);
-
-        if (komoditasChart) {
-            komoditasChart.destroy();
-        }
-
-        komoditasChart = new Chart(ctx, {
-            type: 'line',
-            data: chartData,
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-
-    startMonth.addEventListener("change", updateChart);
-    endMonth.addEventListener("change", updateChart);
-    singleMonthSwitch.addEventListener("change", function () {
-        if (this.checked) {
-            endMonth.disabled = true; // Disable end month if single month is selected
-        } else {
-            endMonth.disabled = false;
-        }
-        updateChart();
+  if (selectedProvinsi && kabupatenData[selectedProvinsi]) {
+    kabupatenData[selectedProvinsi].forEach((kabupaten) => {
+      const option = document.createElement('option');
+      option.value = kabupaten.toLowerCase().replace(/\s+/g, '_');
+      option.textContent = kabupaten;
+      kabupatenSelect.appendChild(option);
     });
-});
-</script>
+  }
+}
+
+// Event listener for Provinsi dropdown
+provinsiSelect.addEventListener('change', updateKabupatenOptions);
+  </script>
+</html>
